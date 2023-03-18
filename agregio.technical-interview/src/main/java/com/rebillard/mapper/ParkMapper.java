@@ -1,8 +1,8 @@
 package com.rebillard.mapper;
 
 import com.rebillard.model.Park;
-import com.rebillard.model.dto.CapacityDTO;
 import com.rebillard.model.dto.ParkDTO;
+import java.util.stream.Collectors;
 import javax.enterprise.context.ApplicationScoped;
 import lombok.AllArgsConstructor;
 
@@ -16,6 +16,9 @@ public class ParkMapper {
     return Park.builder()
         .name(parkDTO.getName())
         .type(parkDTO.getType())
+        .capacityList(
+            parkDTO.getCapacityList().stream().map(capacityMapper::getFromDto)
+                .collect(Collectors.toList()))
         .build();
 
   }
@@ -24,6 +27,8 @@ public class ParkMapper {
     return ParkDTO.builder()
         .name(park.getName())
         .type(park.getType())
+        .capacityList(park.getCapacityList().stream().map(capacityMapper::getParkDtoFromPark)
+            .collect(Collectors.toList()))
         .build();
 
   }

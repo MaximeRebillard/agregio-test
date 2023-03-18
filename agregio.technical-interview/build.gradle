@@ -11,6 +11,7 @@ repositories {
 }
 
 dependencies {
+  implementation 'io.quarkus:quarkus-smallrye-openapi'
   implementation 'io.quarkus:quarkus-hibernate-validator'
   implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
   implementation 'io.quarkus:quarkus-resteasy-reactive'
@@ -27,12 +28,21 @@ dependencies {
   compileOnly 'org.projectlombok:lombok:1.18.26'
   annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
+  // Hibernate ORM specific dependencies
+  implementation("io.quarkus:quarkus-hibernate-orm-panache")
+
+// JDBC driver dependencies
+  implementation("io.quarkus:quarkus-jdbc-postgresql")
+
+  //TEST
   testCompileOnly 'org.projectlombok:lombok:1.18.26'
   testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
 
   testImplementation 'io.quarkus:quarkus-junit5'
   testImplementation 'io.quarkus:quarkus-junit5-mockito'
   testImplementation 'io.quarkus:quarkus-jacoco'
+
+
 }
 
 group 'com.rebillard'

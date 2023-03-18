@@ -1,25 +1,26 @@
 package com.rebillard.mapper;
 
 import com.rebillard.model.Capacity;
-import com.rebillard.model.Park;
 import com.rebillard.model.dto.CapacityDTO;
-import com.rebillard.model.dto.ParkDTO;
+import java.time.Duration;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class CapacityMapper {
 
-  public Park getFromDto(CapacityDTO capacityDTO) {
-    return null;
+  public Capacity getFromDto(CapacityDTO capacityDTO) {
+    return Capacity.builder()
+        .duration(capacityDTO.getDuration())
+        .energyAmount(capacityDTO.getEnergyAmount())
+        .build();
 
   }
 
-  public ParkDTO getParkDtoFromPark(Park park) {
-    return ParkDTO.builder()
-        .name(park.getName())
-        .type(park.getType())
+  public CapacityDTO getParkDtoFromPark(Capacity capacity) {
+    return CapacityDTO.builder()
+        .duration(Duration.ofHours(4))
+        .energyAmount(capacity.getEnergyAmount())
         .build();
-
   }
 
 }

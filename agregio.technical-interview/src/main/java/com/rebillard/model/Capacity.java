@@ -1,12 +1,10 @@
 package com.rebillard.model;
 
-import io.smallrye.common.constraint.NotNull;
 import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -33,6 +31,8 @@ public class Capacity {
   @ManyToOne
   @JoinColumn(name = "park_id")
   private Park park;
+  @OneToMany(mappedBy = "id")
+  private List<Block> blocks;
 
 
 }

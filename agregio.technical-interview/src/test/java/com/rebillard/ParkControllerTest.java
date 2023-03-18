@@ -39,7 +39,6 @@ class ParkControllerTest {
         .type(ParkType.WIND)
         .capacityList(
             List.of(CapacityDTO.builder()
-                .id(UUID.randomUUID())
                 .energyAmount(200)
                 .duration(Duration.ofHours(4))
                 .build())

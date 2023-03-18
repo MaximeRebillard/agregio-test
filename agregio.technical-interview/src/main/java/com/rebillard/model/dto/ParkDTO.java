@@ -1,6 +1,5 @@
 package com.rebillard.model.dto;
 
-import com.rebillard.model.Capacity;
 import com.rebillard.model.enums.ParkType;
 import io.smallrye.common.constraint.NotNull;
 import java.util.List;

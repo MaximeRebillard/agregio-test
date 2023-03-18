@@ -5,10 +5,9 @@ import com.rebillard.model.Park;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import javax.enterprise.context.ApplicationScoped;
 
-@ApplicationScoped
-public class FakeDbService implements IDbService {
+
+public class FakeDbService {
 
   private List<Park> parkList;
   private List<Capacity> capacityList;
@@ -18,7 +17,7 @@ public class FakeDbService implements IDbService {
     capacityList = new ArrayList<>();
   }
 
-  @Override
+
   public Park create(Park park) {
     park.setId(UUID.randomUUID());
     parkList.add(park);

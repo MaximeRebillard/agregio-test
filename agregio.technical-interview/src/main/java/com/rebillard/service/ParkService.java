@@ -17,8 +17,8 @@ public class ParkService implements IParkService {
   @Override
   public ParkDTO create(ParkDTO parkDTO) {
     Park park = parkMapper.getParkFromDto(parkDTO);
-    park = dbService.create(park);
-    return parkMapper.getParkDtoFromPark(park);
+    Park park2 = dbService.create(park);
+    return parkMapper.getParkDtoFromPark(park2);
 
   }
 }
