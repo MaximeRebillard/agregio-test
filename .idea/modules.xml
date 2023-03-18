@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/agregio.iml" filepath="$PROJECT_DIR$/.idea/agregio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/agregio.technical-interview.main.iml" filepath="$PROJECT_DIR$/.idea/modules/agregio.technical-interview.main.iml" />
     </modules>
   </component>
 </project>

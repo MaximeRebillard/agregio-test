@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id 'io.quarkus'
+    id 'checkstyle'
+
 }
 
 repositories {
@@ -15,6 +17,12 @@ dependencies {
     implementation 'io.quarkus:quarkus-arc'
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
+
+  compileOnly 'org.projectlombok:lombok:1.18.26'
+  annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+  testCompileOnly 'org.projectlombok:lombok:1.18.26'
+  testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
 }
 
 group 'com.rebillard'
@@ -35,4 +43,16 @@ compileJava {
 
 compileTestJava {
     options.encoding = 'UTF-8'
+}
+
+apply plugin: 'checkstyle'
+checkstyle {
+  toolVersion '10.9.1'
+  configFile file("config/checkstyle/checkstyle.xml")
+}
+checkstyleMain {
+  source ='src/main/java'
+}
+checkstyleTest {
+  source ='src/test/java'
 }
