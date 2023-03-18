@@ -1,48 +1,58 @@
 plugins {
-    id 'java'
-    id 'io.quarkus'
-    id 'checkstyle'
+  id 'java'
+  id 'io.quarkus'
+  id 'checkstyle'
 
 }
 
 repositories {
-    mavenCentral()
-    mavenLocal()
+  mavenCentral()
+  mavenLocal()
 }
 
 dependencies {
-    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
-    implementation 'io.quarkus:quarkus-resteasy-reactive'
-    implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'
-    implementation 'io.quarkus:quarkus-arc'
-    testImplementation 'io.quarkus:quarkus-junit5'
-    testImplementation 'io.rest-assured:rest-assured'
+  implementation 'io.quarkus:quarkus-hibernate-validator'
+  implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+  implementation 'io.quarkus:quarkus-resteasy-reactive'
+  implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'
+  implementation 'io.quarkus:quarkus-arc'
+  testImplementation 'io.quarkus:quarkus-junit5'
+  testImplementation 'io.rest-assured:rest-assured'
+
+  implementation("io.quarkus:quarkus-hibernate-orm")
+
+// JDBC driver dependencies
+  implementation("io.quarkus:quarkus-jdbc-postgresql")
 
   compileOnly 'org.projectlombok:lombok:1.18.26'
   annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
   testCompileOnly 'org.projectlombok:lombok:1.18.26'
   testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+  testImplementation 'io.quarkus:quarkus-junit5'
+  testImplementation 'io.quarkus:quarkus-junit5-mockito'
+  testImplementation 'io.quarkus:quarkus-jacoco'
 }
 
 group 'com.rebillard'
 version '1.0.0-SNAPSHOT'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+  sourceCompatibility = JavaVersion.VERSION_11
+  targetCompatibility = JavaVersion.VERSION_11
 }
 
 test {
-    systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
+  systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
 }
 compileJava {
-    options.encoding = 'UTF-8'
-    options.compilerArgs << '-parameters'
+  options.encoding = 'UTF-8'
+  options.compilerArgs << '-parameters'
 }
 
 compileTestJava {
-    options.encoding = 'UTF-8'
+  options.encoding = 'UTF-8'
 }
 
 apply plugin: 'checkstyle'
@@ -51,8 +61,8 @@ checkstyle {
   configFile file("config/checkstyle/checkstyle.xml")
 }
 checkstyleMain {
-  source ='src/main/java'
+  source = 'src/main/java'
 }
 checkstyleTest {
-  source ='src/test/java'
+  source = 'src/test/java'
 }
