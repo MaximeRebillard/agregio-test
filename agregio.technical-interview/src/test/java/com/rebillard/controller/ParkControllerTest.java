@@ -1,4 +1,4 @@
-package com.rebillard;
+package com.rebillard.controller;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
@@ -15,7 +15,6 @@ import io.quarkus.test.junit.mockito.InjectMock;
 import io.restassured.http.ContentType;
 import java.time.Duration;
 import java.util.List;
-import java.util.UUID;
 import javax.inject.Inject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,11 +29,11 @@ class ParkControllerTest {
   @InjectMock
   ParkService parkService;
 
-  ParkDTO parkDTO;
+  ParkDTO park;
 
   @BeforeEach
   void init() {
-    parkDTO = ParkDTO.builder()
+    park = ParkDTO.builder()
         .name("name")
         .type(ParkType.WIND)
         .capacityList(
@@ -48,20 +47,15 @@ class ParkControllerTest {
   @Test
   void create_shouldReturnCreatedPark() throws JsonProcessingException {
     Mockito.when(parkService.create(any(ParkDTO.class)))
-        .thenReturn(parkDTO);
+        .thenReturn(park);
 
     given()
         .contentType(ContentType.JSON)
-        .body(objectMapper.writeValueAsString(parkDTO))
+        .body(objectMapper.writeValueAsString(park))
         .when().post("/park")
         .then()
         .statusCode(200)
-        .body(is(objectMapper.writeValueAsString(parkDTO)));
-  }
-
-  @Test
-  void create_shouldThrowError_whenCapacityListIsEmpty() {
-
+        .body(is(objectMapper.writeValueAsString(park)));
   }
 
 }

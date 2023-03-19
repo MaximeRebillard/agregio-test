@@ -41,6 +41,8 @@ dependencies {
   testImplementation 'io.quarkus:quarkus-junit5'
   testImplementation 'io.quarkus:quarkus-junit5-mockito'
   testImplementation 'io.quarkus:quarkus-jacoco'
+  testImplementation 'io.quarkus:quarkus-panache-mock:1.7.0.Final'
+
 
 
 }

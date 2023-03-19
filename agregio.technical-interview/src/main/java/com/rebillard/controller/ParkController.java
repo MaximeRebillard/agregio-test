@@ -14,7 +14,7 @@ public class ParkController {
   private final ParkService parkService;
 
   @POST
-  public ParkDTO create(@Valid ParkDTO park) {
-    return parkService.create(park);
+  public ParkDTO create(@Valid ParkDTO parkDTO) {
+    return parkService.create(parkDTO);
   }
 }
