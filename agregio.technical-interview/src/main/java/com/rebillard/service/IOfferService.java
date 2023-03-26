@@ -1,7 +1,9 @@
 package com.rebillard.service;
 
+import com.rebillard.model.dto.OfferDTO;
+
 public interface IOfferService {
 
-  void create();
+  OfferDTO create(OfferDTO offerDTO);
 
 }

@@ -27,7 +27,7 @@ public class ParkMapper {
     return ParkDTO.builder()
         .name(park.getName())
         .type(park.getType())
-        .capacityList(park.getCapacityList().stream().map(capacityMapper::getParkDtoFromPark)
+        .capacityList(park.getCapacityList().stream().map(capacityMapper::getCapacityDtoFromPark)
             .collect(Collectors.toList()))
         .build();
 
