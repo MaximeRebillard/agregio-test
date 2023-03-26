@@ -28,14 +28,15 @@ public class Offer {
   @Id
   private UUID id;
 
+  private String issuer;
+
   @Enumerated(EnumType.STRING)
   private MarketType market;
 
   @Enumerated(EnumType.STRING)
   private OfferStatus status;
 
-  //new code
-  @OneToMany(mappedBy = "id")
+  @OneToMany(mappedBy = "offer")
   private List<Block> blockList;
 
 

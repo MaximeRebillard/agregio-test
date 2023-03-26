@@ -17,6 +17,7 @@ public class OfferMapper {
         .blockList(offerDTO.getBlockList().stream().map(t ->
             blockMapper.getFromDto(t)).collect(Collectors.toList()))
         .market(offerDTO.getMarket())
+        .issuer(offerDTO.getIssuer())
         .build();
   }
 
@@ -25,6 +26,7 @@ public class OfferMapper {
         .blockList(offerDTO.getBlockList().stream().map(t ->
             blockMapper.getParkDtoFromPark(t)).collect(Collectors.toList()))
         .market(offerDTO.getMarket())
+        .issuer(offerDTO.getIssuer())
         .build();
   }
 }
