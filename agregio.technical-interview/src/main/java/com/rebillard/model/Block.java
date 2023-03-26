@@ -34,5 +34,9 @@ public class Block {
   @JoinColumn(name = "capacity_id")
   private Capacity capacity;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "offer_id")
+  private Offer offer;
+
 
 }

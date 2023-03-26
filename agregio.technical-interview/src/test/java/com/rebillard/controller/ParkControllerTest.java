@@ -13,7 +13,6 @@ import com.rebillard.service.ParkService;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.mockito.InjectMock;
 import io.restassured.http.ContentType;
-import java.time.Duration;
 import java.util.List;
 import javax.inject.Inject;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,7 +38,7 @@ class ParkControllerTest {
         .capacityList(
             List.of(CapacityDTO.builder()
                 .energyAmount(200)
-                .duration(Duration.ofHours(4))
+                .hours(4)
                 .build())
         ).build();
   }

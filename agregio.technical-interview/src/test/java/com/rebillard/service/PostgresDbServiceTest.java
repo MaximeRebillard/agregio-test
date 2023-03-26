@@ -20,7 +20,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 @QuarkusTest
-class ParkServiceTest {
+class PostgresDbServiceTest {
 
   @Inject
   PostgresDbService postgresDbService;
@@ -31,8 +31,7 @@ class ParkServiceTest {
   CapacityRepository capacityRepository;
 
   @Test
-  void create() {
-
+  void create_shouldReturnCreatedPark() {
     Park park = Park.builder()
         .id(UUID.randomUUID())
         .name("name")

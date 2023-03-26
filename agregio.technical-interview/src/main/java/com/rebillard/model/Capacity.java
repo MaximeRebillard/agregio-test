@@ -1,6 +1,5 @@
 package com.rebillard.model;
 
-import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Entity;
@@ -29,13 +28,13 @@ public class Capacity {
   @Id
   @GeneratedValue
   private UUID id;
-  private double energyAmount;
-  private Duration duration;
+  private int energyAmount;
+  private int hours;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "park_id")
   private Park park;
-  @OneToMany(mappedBy = "id")
+  @OneToMany(mappedBy = "capacity")
   private List<Block> blocks;
 
 }

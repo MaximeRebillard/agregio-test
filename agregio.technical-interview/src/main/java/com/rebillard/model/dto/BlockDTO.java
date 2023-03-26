@@ -5,9 +5,10 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class CapacityDTO {
+public class BlockDTO {
+
+  private int timeAmount;
 
   private int energyAmount;
-  private int hours;
 
 }
