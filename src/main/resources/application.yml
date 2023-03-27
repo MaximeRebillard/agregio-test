@@ -1,0 +1,19 @@
+# datasource configuration
+quarkus:
+  devservices:
+    enabled: false
+  http:
+    port: 8080
+  datasource:
+    db-kind: postgresql
+    username: postgres
+    password: postgres
+    jdbc:
+      url: jdbc:postgresql://localhost:5438/postgres
+      driver: org.postgresql.Driver
+    maxSize: 20
+  hibernate-orm:
+    database:
+      generation: none #change this by drop-and-create if first time
+    dialect: org.hibernate.dialect.PostgreSQLDialect
+# drop and create the database at startup (use `update` to only update the schema)

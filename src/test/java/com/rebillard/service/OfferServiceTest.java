@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 
 import com.rebillard.model.Block;
 import com.rebillard.model.Capacity;
+import com.rebillard.model.RemainingAvailableCapacity;
 import com.rebillard.model.dto.BlockDTO;
 import com.rebillard.model.dto.OfferDTO;
 import com.rebillard.model.enums.MarketType;
@@ -74,6 +75,20 @@ class OfferServiceTest {
                 .build()))
         .market(marketType)
         .build();
+
+    when(capacityRepository.findRemainingAvailableCapacity(30))
+        .thenReturn(List.of(
+            RemainingAvailableCapacity.builder()
+                .capacityHours(3)
+                .sumBlockTimeAmount(1)
+                .capacityId(UUID.randomUUID())
+                .build(),
+            RemainingAvailableCapacity.builder()
+                .capacityHours(3)
+                .sumBlockTimeAmount(3)
+                .capacityId(UUID.randomUUID())
+                .build()
+        ));
 
     when(panacheQueryCapacityRepoMock.firstResultOptional())
         .thenReturn(Optional.of(capacity));

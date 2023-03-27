@@ -34,7 +34,7 @@ public class Park {
   @Enumerated(EnumType.STRING)
   private ParkType type;
 
-  @OneToMany(mappedBy = "id")
+  @OneToMany(mappedBy = "park")
   private List<Capacity> capacityList;
 
 }
