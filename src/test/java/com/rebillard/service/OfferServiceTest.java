@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 
 import com.rebillard.model.Block;
 import com.rebillard.model.Capacity;
+import com.rebillard.model.RemainingAvailableCapacity;
 import com.rebillard.model.dto.BlockDTO;
 import com.rebillard.model.dto.OfferDTO;
 import com.rebillard.model.enums.MarketType;
@@ -71,9 +72,40 @@ class OfferServiceTest {
             BlockDTO.builder()
                 .energyAmount(30)
                 .timeAmount(1)
+                .build(),
+            BlockDTO.builder()
+                .energyAmount(60)
+                .timeAmount(4)
                 .build()))
         .market(marketType)
         .build();
+
+    when(capacityRepository.findRemainingAvailableCapacity(30))
+        .thenReturn(List.of(
+            RemainingAvailableCapacity.builder()
+                .capacityHours(3)
+                .sumBlockTimeAmount(1)
+                .capacityId(UUID.randomUUID())
+                .build(),
+            RemainingAvailableCapacity.builder()
+                .capacityHours(3)
+                .sumBlockTimeAmount(3)
+                .capacityId(UUID.randomUUID())
+                .build()
+        ));
+    when(capacityRepository.findRemainingAvailableCapacity(60))
+        .thenReturn(List.of(
+            RemainingAvailableCapacity.builder()
+                .capacityHours(1)
+                .sumBlockTimeAmount(0)
+                .capacityId(UUID.randomUUID())
+                .build(),
+            RemainingAvailableCapacity.builder()
+                .capacityHours(6)
+                .sumBlockTimeAmount(3)
+                .capacityId(UUID.randomUUID())
+                .build()
+        ));
 
     when(panacheQueryCapacityRepoMock.firstResultOptional())
         .thenReturn(Optional.of(capacity));
@@ -91,7 +123,6 @@ class OfferServiceTest {
       assertEquals(30, block.getEnergyAmount());
       assertEquals(1, block.getTimeAmount());
     });
-
 
   }
 
