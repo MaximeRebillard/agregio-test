@@ -6,6 +6,12 @@ This project uses Quarkus v2.16.4
 
 ## Launch
 
+### Docker-compose (postgres bdd)
+=> see the configuration in application.yml
+```
+docker-compose up
+```
+
 ### Project
 ```
 ./gradlew quarkusDev
@@ -54,6 +60,8 @@ The http port is the default port 8080
   ]
 }
 ```
+
+
 
 ### Schema
 

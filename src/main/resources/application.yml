@@ -1,5 +1,7 @@
 # datasource configuration
 quarkus:
+  log:
+    level: INFO
   devservices:
     enabled: false
   http:
